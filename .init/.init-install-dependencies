@@ -1,0 +1,4 @@
+{
+    "command": "npm install",
+    "working_directory": "/home/kavia/workspace/code-generation/video-subtitle-generator-76287/subtitle_frontend"
+}
