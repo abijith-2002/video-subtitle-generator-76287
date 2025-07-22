@@ -1,104 +1,290 @@
-/* CSS Variables for Theme Management */
 :root {
-  /* Light theme colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --text-primary: #282c34;
-  --text-secondary: #61dafb;
+  --kavia-primary: #232946;
+  --kavia-secondary: #b8c1ec;
+  --kavia-accent: #f7c59f;
+  --content-dark: #1a1a1a;
+  --content-white: #fff;
   --border-color: #e9ecef;
-  --button-bg: #007bff;
-  --button-text: #ffffff;
+  --danger: #e85636;
+  --success: #23b05e;
 }
 
-[data-theme="dark"] {
-  /* Dark theme colors */
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #282c34;
-  --text-primary: #ffffff;
-  --text-secondary: #61dafb;
-  --border-color: #404040;
-  --button-bg: #0056b3;
-  --button-text: #ffffff;
-}
-
+body,
 .App {
+  font-family: 'Inter', system-ui, 'Segoe UI', 'Roboto', Arial, sans-serif;
+  background: var(--kavia-primary);
+  color: var(--content-white);
+  min-height: 100vh;
+  margin: 0;
+  transition: background 0.2s, color 0.2s;
+}
+
+.main-header {
   text-align: center;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  padding: 32px 0 8px 0;
+  background: var(--kavia-primary);
+  border-bottom: 1.5px solid var(--kavia-secondary);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header-hint {
+  margin-top: 8px;
+  font-size: 1.09rem;
+  color: var(--kavia-accent);
+  letter-spacing: 0.01em;
+  display: block;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.content-main {
+  max-width: 650px;
+  margin: 36px auto 0 auto;
+  padding: 0 3vw;
 }
 
-.App-header {
-  background-color: var(--bg-secondary);
-  min-height: 100vh;
+.upload-box, .generate-box, .history-panel {
+  background: var(--content-dark);
+  border-radius: 18px;
+  box-shadow: 0 4px 32px 0 rgba(20, 22, 28, 0.13);
+  padding: 28px 28px 14px 28px;
+  margin-bottom: 26px;
+  border: 1px solid var(--kavia-secondary);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: var(--text-primary);
-  transition: background-color 0.3s ease;
-  position: relative;
+  align-items: stretch;
 }
 
-.App-link {
-  color: var(--text-secondary);
-  transition: color 0.3s ease;
-}
-
-.theme-toggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: 600;
+.upload-label {
+  font-size: 1.08em;
+  color: var(--kavia-secondary);
+  margin-bottom: 12px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.theme-toggle:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  opacity: 0.9;
+.file-input {
+  display: block;
+  margin-top: 12px;
+  background: #232946;
+  color: var(--kavia-accent);
+  border: none;
+  font-size: 1em;
 }
 
-.theme-toggle:active {
-  transform: translateY(0);
+.upload-box .btn-row {
+  display: flex;
+  gap: 16px;
+  margin: 18px 0 8px 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.primary-btn,
+.secondary-btn,
+.download-btn {
+  border: none;
+  font-family: inherit;
+  font-size: 1em;
+  border-radius: 22px;
+  padding: 9px 28px;
+  margin: 0;
+  font-weight: 500;
+  box-shadow: 0 1.5px 4px 0 rgba(34,38,44,0.04);
+  cursor: pointer;
+  transition: background .16s, color .16s, box-shadow .22s, border .16s;
 }
 
-/* Responsive design for mobile */
-@media (max-width: 768px) {
-  .theme-toggle {
-    top: 10px;
-    right: 10px;
-    padding: 8px 16px;
-    font-size: 12px;
-  }
+.primary-btn {
+  background: var(--kavia-secondary);
+  color: var(--kavia-primary);
+}
+
+.primary-btn:disabled {
+  opacity: 0.54;
+  cursor: not-allowed;
+}
+
+.secondary-btn {
+  background: none;
+  color: var(--kavia-accent);
+  border: 1.5px solid var(--kavia-accent);
+}
+
+.secondary-btn:hover,
+.primary-btn:hover {
+  filter: brightness(1.08);
+  background: var(--kavia-accent);
+  color: var(--kavia-primary);
+}
+
+.file-input::-webkit-file-upload-button {
+  background: var(--kavia-secondary);
+  color: var(--kavia-primary);
+  border: none;
+  border-radius: 14px;
+  padding: 7px 18px;
+  margin: 0 7px 0 0;
+  font-family: inherit;
+  font-size: 1em;
+  cursor: pointer;
+}
+.file-input::file-selector-button {
+  background: var(--kavia-secondary);
+  color: var(--kavia-primary);
+  border: none;
+  border-radius: 14px;
+  padding: 7px 18px;
+  margin: 0 10px 0 0;
+  font-family: inherit;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.status-upload,
+.status-generation,
+.status-error,
+.status-success {
+  font-size: 1rem;
+  margin-top: 10px;
+  margin-bottom: 0.5em;
+  font-weight: 500;
+  opacity: 0.97;
+}
+.status-upload,
+.status-generation {
+  color: var(--kavia-secondary);
+}
+.status-success {
+  color: var(--success);
+}
+.status-error {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.generate-box {
+  flex-direction: column;
+  padding-bottom: 12px;
+}
+
+.generate-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.format-select {
+  font-size: 1em;
+  border-radius: 10px;
+  border: 1.2px solid var(--kavia-secondary);
+  padding: 6px 22px 6px 10px;
+  color: var(--kavia-primary);
+  background: var(--kavia-accent);
+  appearance: none;
+  transition: border 0.16s;
+  font-weight: 700;
+}
+.format-select:focus {
+  outline: none;
+  border-color: var(--kavia-secondary);
+}
+
+.history-panel {
+  margin-top: 30px;
+  margin-bottom: 26px;
+  background: var(--content-dark);
+  box-shadow: 0 2.5px 14px 0 rgba(42, 48, 54, 0.11);
+  border: 1.5px solid var(--kavia-secondary);
+  border-radius: 18px;
+  padding: 26px 22px 16px 22px;
+}
+
+.subtitle-history-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.subtitle-history-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(184,193,236,0.13);
+  font-size: 1.06em;
+}
+
+.subtitle-history-item:last-child {
+  border-bottom: none;
+}
+
+.history-item-main {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.history-filename {
+  font-weight: 600;
+  color: var(--kavia-accent);
+  font-size: 1.11em;
+}
+
+.history-time {
+  color: var(--kavia-secondary);
+  font-size: 0.93em;
+  margin-top: 2px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.history-downloads {
+  flex: 1;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.download-btn {
+  background: var(--kavia-secondary);
+  color: var(--kavia-primary);
+  padding: 7px 22px;
+  border: none;
+  font-weight: 700;
+  border-radius: 32px;
+}
+.download-btn:hover {
+  background: var(--kavia-accent);
+  color: var(--kavia-primary);
+}
+
+.history-empty {
+  color: var(--kavia-secondary);
+  font-size: 1em;
+  opacity: 0.84;
+  text-align: center;
+  margin: 30px 0;
+}
+
+.main-footer {
+  text-align: center;
+  font-size: 1em;
+  margin-top: 40px;
+  color: var(--kavia-secondary);
+  opacity: 0.91;
+}
+
+.main-footer a {
+  color: var(--kavia-accent);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.main-footer a:hover {
+  color: var(--kavia-secondary);
+}
+
+@media (max-width: 700px) {
+  .content-main { max-width: 97vw; padding: 0 1vw; }
+  .upload-box, .generate-box, .history-panel { padding: 18px 8px 7px 8px;}
+  .main-header { padding: 16px 0 4px 0; }
 }
